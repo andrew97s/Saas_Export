@@ -25,17 +25,18 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="cn.itheima.domain"/>
-       <!-- <property name="plugins" >
+        <property name="plugins" >
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">
                     <property name="properties">
                         <value>
-                            reasonable=true
+                            reasonable=true,
+                            helperDialect=mysql
                         </value>
                     </property>
                 </bean>
             </array>
-        </property>-->
+        </property>
     </bean>
     <!--配置mybatis 映射扫描器-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

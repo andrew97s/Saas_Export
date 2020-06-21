@@ -1,6 +1,7 @@
 package cn.itheima.service;
 
 import cn.itheima.domain.Company;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,4 +17,14 @@ import java.util.List;
 public interface ICompanyService {
 
     List<Company> findAllCompany();
+
+    void saveCompany(Company company);
+
+    void deleteCompanyById(String id);
+
+    Company findCompanyById(String id);
+
+    void updateCompany(Company company);
+
+    PageInfo<Company> findByPage(Integer currentPage,Integer pageSize);
 }

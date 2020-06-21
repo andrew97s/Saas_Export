@@ -1,9 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=utf-8"%>
 <html>
 <head>
-    <title>homePaGE</title>
 </head>
+<script type="text/javascript">
+    //javascript页面跳转
+     window.location.href = "login.do";
+</script>
 <body>
-<<a href="${pageContext.request.contextPath}/company/findAll">testFindAllCompanies</a>
 </body>
 </html>

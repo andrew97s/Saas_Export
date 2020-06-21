@@ -21,10 +21,8 @@ public class ICompanyDaoTest {
 
     @Test
     public void findAll() {
-        List<Company> all = dao.findAll();
-        for (Company company : all) {
-            System.out.println(company);
-        }
+        Company company = dao.findById("5ddb850f-99f4-4b0e-8406-4b01f30faded");
+        System.out.println(company);
     }
 
     @Test
