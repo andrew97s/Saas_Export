@@ -35,38 +35,22 @@
             }
         };
 
-        /*var zNodes =[
-            { id:11, pId:1, name:"随意勾选 1-1", open:true},
-            { id:111, pId:11, name:"随意勾选 1-1-1"},
-            { id:112, pId:11, name:"随意勾选 1-1-2"},
-            { id:12, pId:1, name:"随意勾选 1-2", open:true},
-            { id:121, pId:12, name:"随意勾选 1-2-1"},
-            { id:122, pId:12, name:"随意勾选 1-2-2"},
-            { id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
-            { id:21, pId:2, name:"随意勾选 2-1"},
-            { id:22, pId:2, name:"随意勾选 2-2", open:true},
-            { id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
-            { id:222, pId:22, name:"随意勾选 2-2-2"},
-            { id:23, pId:2, name:"随意勾选 2-3"},
-            { id:1, pId:0, name:"随意勾选 1", open:true}
-        ];*/
+        var zNodes =[];
 
 
         $(document).ready(function () {
-            var url = "/system/role/getZtreeNodes.do";
-            var param = {"roleid": "${role.id}"};
+            var url = "/system/role/getZTreeNodes.do";
+            var param = {"roleId": "${role.id}"};
             $.get(url, param, function (data) {
+                zNodes=data;
                 // 调用初始化树的方法
                  zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
 				//展开树结点
 				zTreeObj.expandAll(true);
             }, "json");
 
+
         });
-
-       
- 
-
 
         //获取所有选择的节点
         function submitCheckedNodes() {
@@ -121,8 +105,8 @@
                     </div>
                     <!--工具栏/-->
                     <!-- 树菜单 -->
-                    <form name="icform" method="post" action="/system/role/updateRoleModule.do">
-                        <input type="hidden" name="roleid" value="${role.id}"/>
+                    <form name="icform" method="post" action="${ctx}/system/role/updateRoleModule.do">
+                        <input type="hidden" name="roleId" value="${role.id}"/>
                         <input type="hidden" id="moduleIds" name="moduleIds" value=""/>
                         <div class="content_wrap">
                             <div class="zTreeDemoBackground left" style="overflow: visible">

@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="col-md-2 title">上级部门</div>
                                     <div class="col-md-10 data line-height36">
-                                        <select class="form-control" name="parent.id">
+                                        <select class="form-control" name="parentId">
                                             <option value="">请选择</option>
                                             <c:forEach items="${deptList}" var="item">
                                                 <option ${dept.parent.id == item.id ?'selected':''} value="${item.id}">${item.deptName}</option>
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-md-2 title"></div>
                                     <div class="col-md-10 data text-center">
-                                        <button type="button" onclick='document.getElementById("editForm").submit()'  class="btn bg-maroon">保存</button>
+                                        <button type="button" id="sub_btn" onclick='document.getElementById("editForm").submit()'  class="btn bg-maroon">保存</button>
                                         <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
                                     </div>
                                 </div>
@@ -66,6 +66,12 @@
 
         </section>
     </div>
+<script>
+    $("#sub_btn").on("click",function () {
+
+
+    })
+</script>
 </body>
 
 </html>

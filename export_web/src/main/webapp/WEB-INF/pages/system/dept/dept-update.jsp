@@ -41,7 +41,7 @@
                                         <select class="form-control" name="parent.id">
                                             <option value="">请选择</option>
                                             <c:forEach items="${deptList}" var="item">
-                                                <option ${dept.parent.id == item.id ?'selected':''} value="${item.id}">${item.deptName}</option>
+                                                <option ${dept.parentId == item.id ?'selected':''} value="${item.id}">${item.deptName}</option>
                                             </c:forEach>
                                         </select>
                                     </div>

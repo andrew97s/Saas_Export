@@ -150,7 +150,7 @@
                         </thead>
                         <tbody class="tableBody" >
                         ${links }
-                        <c:forEach items="${page.list}" var="o" varStatus="status">
+                        <c:forEach items="${pageInfo.list}" var="o" varStatus="status">
                             <tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
                                 <td><input type="checkbox" name="id" value="${o.id}"/></td>
                                 <td>${status.index+1}</td>
@@ -161,9 +161,8 @@
                                 <td>${o.price}</td>
                                 <td>${o.amount}</td>
                                 <td>
-                                    <a href="${ctx}/cargo/extCproduct/toUpdate.do?id=${o.id}&contractId=${contractId}&contractProductId=${o.contractProductId}">[修改]</a>
-                                    <a href="${ctx}/cargo/extCproduct/delete.do?id=${o.id}&contractId=${contractId}&contractProductId=${o.contractProductId}">[删除]</a>
-
+                                    <a href="${ctx}/cargo/extCproduct/toUpdate.do?id=${o.id}&contractProductId=${o.contractProductId}">[修改]</a>
+                                    <a href="${ctx}/cargo/extCproduct/delete.do?id=${o.id}&contractProductId=${o.contractProductId}&contractId=${contractId}">[删除]</a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -176,10 +175,11 @@
             </div>
             <!-- /.box-body -->
 
+
             <!-- .box-footer-->
             <div class="box-footer">
                 <jsp:include page="../../common/page.jsp">
-                    <jsp:param value="cargo/contractProduct/list.do?contractId=${contractId}" name="pageUrl"/>
+                    <jsp:param value="/cargo/extCproduct/list.do?contractProductId=${contractProductId}" name="pageUrl"/>
                 </jsp:include>
             </div>
             <!-- /.box-footer-->

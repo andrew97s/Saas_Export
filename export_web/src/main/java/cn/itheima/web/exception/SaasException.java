@@ -1,5 +1,6 @@
 package cn.itheima.web.exception;
 
+import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +25,13 @@ public class SaasException implements HandlerExceptionResolver {
         ModelAndView mv = new ModelAndView();
 
         mv.addObject("errorMsg",e.getMessage());
+
+        if (e instanceof AuthorizationException){
+
+            mv.setViewName("forward:/unauthorized.jsp");
+
+            return mv;
+        }
 
         mv.setViewName("error");
 

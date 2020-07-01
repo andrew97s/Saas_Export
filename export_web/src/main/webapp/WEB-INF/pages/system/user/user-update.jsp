@@ -94,10 +94,12 @@
                     <div class="col-md-2 title">等级</div>
                     <div class="col-md-4 data">
                         <div class="form-group form-inline">
-                            <div class="radio"><label><input type="radio" ${user.degree==1?'checked':''} name="degree" value="1">系统管理员</label></div>
-                            <div class="radio"><label><input type="radio" ${user.degree==2?'checked':''} name="degree" value="2">管理所有下属部门和人员</label></div>
-                            <div class="radio"><label><input type="radio" ${user.degree==3?'checked':''} name="degree" value="3">管理本部门</label></div>
-                            <div class="radio"><label><input type="radio" ${user.degree==4?'checked':''} name="degree" value="4">普通员工</label></div>
+                            <select class="form-control" onchange="document.getElementById('degree').value=this.options[this.selectedIndex].text" name="degree">
+                                <option ${user.degree == 1 ?'selected':''} value="1">系统管理员</option>
+                                <option ${user.degree == 2 ?'selected':''} value="2">管理所有下属部门和人员</option>
+                                <option ${user.degree == 3 ?'selected':''} value="3">管理本部门</option>
+                                <option ${user.degree == 4 ?'selected':''} value="4">普通员工</option>
+                            </select>
                         </div>
                     </div>
 

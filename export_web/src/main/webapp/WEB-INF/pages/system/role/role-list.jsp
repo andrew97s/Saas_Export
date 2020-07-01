@@ -31,7 +31,7 @@
     function findModuleByRoleId(){
         var id = getCheckId();
         if(id) {
-            location.href="/system/role/roleModule.do?roleid="+id;
+            location.href="/system/role/roleModule.do?roleId="+id;
         }else{
             alert("请勾选待处理的记录，且每次只能勾选一个")
         }
@@ -98,7 +98,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${page.list}" var="o" varStatus="status">
+                    <c:forEach items="${pageInfo.list}" var="o" varStatus="status">
                     <tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
                         <td><input type="checkbox" name="id" value="${o.id}"/></td>
                         <td>${status.index+1}</td>

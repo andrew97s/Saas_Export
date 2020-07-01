@@ -40,7 +40,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">新增货物</div>
 			<%--enctype="multipart/form-data"--%>
-            <form id="editForm" action="${ctx}/cargo/contractProduct/edit.do" method="post" >
+            <form id="editForm" action="${ctx}/cargo/contractProduct/edit.do" method="post" enctype="multipart/form-data" >
                 <input type="hidden" name="contractId" value="${contractId}">
                 <input type="hidden" name="factoryName" id="factoryName" value="${contractProduct.factoryName}">
                 <div class="row data-type" style="margin: 0px">
@@ -149,8 +149,8 @@
                         </tr>
                         </thead>
                         <tbody class="tableBody" >
-                        ${links }
-                        <c:forEach items="${page.list}" var="o" varStatus="status">
+                        ${links}
+                        <c:forEach items="${pageInfo.list}" var="o" varStatus="status">
                             <tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
                                 <td><input type="checkbox" name="id" value="${o.id}"/></td>
                                 <td>${status.index+1}</td>

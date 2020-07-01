@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itheima.dao.system.IModuleDao">
+
+    <insert id="add">
+        insert INTO ss_module(
+                module_id,
+                parent_id,
+                parent_name,
+                name,
+                layer_num,
+                is_leaf,
+                ico,
+                cpermission,
+                curl,
+                ctype,
+                state,
+                belong,
+                cwhich,
+                quote_num,
+                remark,
+                order_no
+                )
+                VALUES (
+                #{id},
+                #{parentId},
+                #{parentName},
+                #{name},
+                #{layerNum},
+                #{isLeaf},
+                #{ico},
+                #{cPermission},
+                #{cUrl},
+                #{cType},
+                #{state},
+                #{belong},
+                #{cWhich},
+                #{quoteNum},
+                #{remark},
+                #{orderNo}
+                )
+    </insert>
+
+    <insert id="addModuleForRole">
+        insert into pe_role_module values
+        <foreach collection="moduleIds" separator="," item="moduleId">
+            (#{roleId},#{moduleId})
+        </foreach>
+    </insert>
+
+    <update id="update">
+        update ss_module
+        <set>
+            <if test="parentId!=null and parentId!=''">
+                parent_id  = #{parentId} ,
+            </if>
+            <if test="parentName!=null and parentName!=''">
+                parent_name= #{parentName} ,
+            </if>
+            <if test="name!=null and name!=''">
+                name = #{name} ,
+            </if>
+            <if test="layerNum!=null and layerNum!=''">
+                layer_num  = #{layerNum} ,
+            </if>
+            <if test="isLeaf!=null and isLeaf!=''">
+                is_leaf = #{isLeaf} ,
+            </if>
+            <if test="ico!=null and ico!=''">
+                ico = #{ico} ,
+            </if>
+            <if test="cpermission!=null and cpermission!=''">
+                cpermission= #{cPermission} ,
+            </if>
+            <if test="curl!=null and curl!=''">
+                curl = #{cUrl} ,
+            </if>
+            <if test="ctype!=null and ctype!=''">
+                ctype = #{cType} ,
+            </if>
+            <if test="state!=null and state!=''">
+                state = #{state} ,
+            </if>
+            <if test="belong!=null and belong!=''">
+                belong = #{belong} ,
+            </if>
+            <if test="cwhich!=null and cwhich!=''">
+                cwhich = #{cWhich} ,
+            </if>
+            <if test="quoteNum!=null and quoteNum!=''">
+                quote_num  = #{quoteNum} ,
+            </if>
+            <if test="remark!=null and remark!=''">
+                remark = #{remark} ,
+            </if>
+            <if test="orderNo!=null and orderNo!=''">
+                order_no = #{orderNo} ,
+            </if>
+        </set>
+        where module_id=#{id}
+    </update>
+
+    <delete id="delete">
+        delete from ss_module where module_id=#{id}
+    </delete>
+    <delete id="deleteModuleByRoleId">
+        delete from pe_role_module where role_id=#{roleId}
+    </delete>
+
+    <select id="findById" resultMap="module">
+        select * from ss_module where module_id=#{id}
+    </select>
+
+    <select id="findAll" resultMap="module">
+        select * from ss_module order by ctype asc ,order_no asc
+    </select>
+
+    <select id="findByRoleId" resultMap="module">
+        select m.*  from pe_role_module rm inner join ss_module m on m.module_id=rm.module_id where rm.role_id=#{id}
+    </select>
+
+    <select id="findByUserId" resultMap="module">
+        select * from ss_module where module_id in
+        ( select module_id from pe_role_module where role_id in
+        ( select role_id from pe_role_user where user_id=#{userId}))
+    </select>
+
+    <select id="findByBelong" resultMap="module">
+        select * from ss_module where belong=#{belong}
+    </select>
+
+    <resultMap id="module" type="cn.itheima.domain.system.Module">
+        <id property="id" column="module_id"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="parentName" column="parent_name"/>
+        <result property="layerNum" column="layer_num"/>
+        <result property="isLeaf" column="is_leaf"/>
+        <result property="cPermission" column="cpermission"/>
+        <result property="cUrl" column="curl"/>
+        <result property="cType" column="ctype"/>
+        <result property="quoteNum" column="quote_num"/>
+        <result property="orderNo" column="order_num"/>
+    </resultMap>
+</mapper>

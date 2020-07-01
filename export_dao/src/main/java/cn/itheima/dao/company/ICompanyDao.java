@@ -1,6 +1,6 @@
 package cn.itheima.dao.company;
 
-import cn.itheima.domain.Company;
+import cn.itheima.domain.system.Company;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

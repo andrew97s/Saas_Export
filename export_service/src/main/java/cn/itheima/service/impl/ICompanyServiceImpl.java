@@ -1,7 +1,7 @@
 package cn.itheima.service.impl;
 
 import cn.itheima.dao.company.ICompanyDao;
-import cn.itheima.domain.Company;
+import cn.itheima.domain.system.Company;
 import cn.itheima.service.ICompanyService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -15,7 +15,7 @@ import java.util.List;
  * <p></p>
  *
  * @author : Andrew
- * @date : 2020-06-19 20:44
+ * @date : 2020-06-27 08:32
  **/
 
 @Service
@@ -57,6 +57,6 @@ public class ICompanyServiceImpl implements ICompanyService {
 
         List<Company> list = companyDao.findAll();
 
-        return new PageInfo<Company>(list,5);
+        return new PageInfo<>(list,5);
     }
 }

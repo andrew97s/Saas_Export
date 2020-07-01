@@ -93,7 +93,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${list}" var="item">
+                    <c:forEach items="${pageInfo.list}" var="item">
                     <tr>
                         <td><input name="ids" value="${item.id}" type="checkbox"></td>
                         <td>
@@ -117,36 +117,12 @@
         </div>
         <!-- /.box-body -->
 
-        <!-- .box-footer-->
+
         <div class="box-footer">
-            
-
-            <div class="box-tools pull-right">
-                <ul class="pagination">
-                    <li>
-                        <a href="#" aria-label="Previous">首页</a>
-                    </li>
-                    <li><a href="#">上一页</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">下一页</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">尾页</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-
-<%--        <div class="box-footer">
             <jsp:include page="../common/page.jsp">
                 <jsp:param value="${ctx}/company/list.do" name="pageUrl"/>
             </jsp:include>
-        </div>--%>
+        </div>
         <!-- /.box-footer-->
 
     </div>

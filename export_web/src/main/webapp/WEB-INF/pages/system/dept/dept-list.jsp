@@ -16,7 +16,7 @@
 </head>
 <script>
     function deleteById() {
-        var id = getCheckId()
+        var id = getCheckId();
         if(id) {
             if(confirm("你确认要删除此条记录吗？")) {
                 location.href="/system/dept/delete.do?id="+id;
@@ -86,7 +86,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${page.list}" var="dept"  varStatus="st">
+                    <c:forEach items="${pageInfo.list}" var="dept"  varStatus="st">
                         <tr>
                             <td><input type="checkbox" name="id" value="${dept.id }"/></td>
                             <td>${st.count }</td>

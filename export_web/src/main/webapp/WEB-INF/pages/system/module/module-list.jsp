@@ -90,15 +90,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${page.list}" var="o"  varStatus="st">
+                    <c:forEach items="${pageInfo.list}" var="o"  varStatus="st">
                         <tr>
                             <td><input type="checkbox" name="id" value="${o.id }"/></td>
                             <td>${st.index+1}</td>
                             <td><a href="moduleAction_toview?id=${o.id}">${o.name}</a></td>
                             <td>${o.parentName}</td>
-                            <td>${o.cpermission}</td>
-                            <td>${o.curl}</td>
-                            <td>${o.ctype==0?'主菜单':o.ctype==1?'二级菜单':'按钮'}</td>
+                            <td>${o.CPermission}</td>
+                            <td>${o.CUrl}</td>
+                            <td>${o.CType==0?'主菜单':o.CType==1?'二级菜单':'按钮'}</td>
                             <td>${o.belong}</td>
                             <td>${o.state==0?'停用':'启用'}</td>
                             <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="/system/module/toUpdate.do?id=${o.id}"'>编辑</button></th>

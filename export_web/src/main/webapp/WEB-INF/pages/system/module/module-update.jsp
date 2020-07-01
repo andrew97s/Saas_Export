@@ -43,12 +43,12 @@
 
                         <div class="col-md-2 title">权限标识</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" placeholder="权限标识" name="cpermission" value="${module.cpermission}">
+                            <input type="text" class="form-control" placeholder="权限标识" name="cPermission" value="${module.CPermission}">
                         </div>
 
                         <div class="col-md-2 title">链接</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" placeholder="链接" name="curl" value="${module.curl}">
+                            <input type="text" class="form-control" placeholder="链接" name="cUrl" value="${module.CUrl}">
                         </div>
 
 
@@ -56,9 +56,9 @@
                         <div class="col-md-2 title">类型</div>
                         <div class="col-md-4 data">
                             <div class="form-group form-inline">
-                                <div class="radio"><label><input type="radio" ${module.ctype==0?'checked':''} name="ctype" value="0">主菜单</label></div>
-                                <div class="radio"><label><input type="radio" ${module.ctype==1?'checked':''} name="ctype" value="1">二级菜单</label></div>
-                                <div class="radio"><label><input type="radio" ${module.ctype==2?'checked':''} name="ctype" value="2">按钮</label></div>
+                                <div class="radio"><label><input type="radio" ${module.CType==0?'checked':''} name="cType" value="0">主菜单</label></div>
+                                <div class="radio"><label><input type="radio" ${module.CType==1?'checked':''} name="cType" value="1">二级菜单</label></div>
+                                <div class="radio"><label><input type="radio" ${module.CType==2?'checked':''} name="cType" value="2">按钮</label></div>
                             </div>
                         </div>
 

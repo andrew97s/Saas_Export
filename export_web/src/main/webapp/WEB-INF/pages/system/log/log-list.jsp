@@ -45,12 +45,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${page.list}" var="log"  varStatus="st">
+                    <c:forEach items="${pageInfo.list}" var="log"  varStatus="st">
                         <tr>
                             <td>${st.count }</td>
-                            <td>${log.userName }</td>
+                            <td>${log.username }</td>
                             <td>${log.ip}</td>
-                            <td>${log.action}</td>
+                            <td>${log.method}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
