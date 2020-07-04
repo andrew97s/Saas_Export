@@ -40,6 +40,13 @@
     // 指定图表的配置项和数据
     $.get('/stat/onlineCharts.do').done(function (data) {
         // 使用刚指定的配置项和数据显示图表。
+        var titles=[];
+        var values=[];
+        for (var i = 0; i < data.length; i++) {
+            titles[i] = data[i].name;
+            values[i] = data[i].value;
+
+        }
         myChart.setOption(
             {
                 title: {
@@ -48,13 +55,13 @@
                 },
                 xAxis: {
                     type: 'category',
-                    data: data.title
+                    data: titles
                 },
                 yAxis: {
                     type: 'value'
                 },
                 series: [{
-                    data: data.value,
+                    data: values,
                     type: 'line'
                 }]
             }

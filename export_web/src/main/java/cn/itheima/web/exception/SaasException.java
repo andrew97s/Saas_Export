@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date : 2020-06-20 11:36
  **/
 
-@Component
+/*@Component*/
 public class SaasException implements HandlerExceptionResolver {
 
     @Override

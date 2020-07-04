@@ -15,15 +15,10 @@
         <module>export_dao</module>
         <module>export_service</module>
         <module>export_web</module>
-        <module>export_company_interface</module>
-        <module>export_company_service</module>
-        <module>export_portal_web</module>
         <module>export_cargo_interface</module>
         <module>export_cargo_service</module>
-        <module>cxf_ws_weather_provider</module>
-        <module>cxf_ws_weather_consumer</module>
-        <module>cxf_rs_user_provider</module>
-        <module>cxf_rs_user_consumer</module>
+        <module>export_stat_interface</module>
+        <module>export_stat_service</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

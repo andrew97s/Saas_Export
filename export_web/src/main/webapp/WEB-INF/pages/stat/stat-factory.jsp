@@ -17,7 +17,7 @@
     </section>
     <section class="content">
         <div class="box box-primary">
-            <div id="main" style="width: 600px;height:400px;"></div>
+            <div id="main" style="width: 1000px;height:400px;"></div>
         </div>
     </section>
 </div>
@@ -31,6 +31,10 @@
     // 指定图表的配置项和数据
     $.get('/stat/factoryCharts.do').done(function (data) {
         // 使用刚指定的配置项和数据显示图表。
+        var titles=[];
+        for (var i = 0; i < data.length; i++) {
+            titles[i]=data[i].name;
+        }
         myChart.setOption({
             title : {
                 text: '厂家销售统计',
@@ -40,6 +44,11 @@
             tooltip : {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend:{
+                orient:'vertical',
+                left:'left',
+                date:titles
             },
             series : [
                 {

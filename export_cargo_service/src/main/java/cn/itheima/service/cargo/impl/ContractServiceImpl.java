@@ -105,4 +105,17 @@ public class ContractServiceImpl implements ContractService {
     public List<ContractProductVo> findContractProductVoiByShipTime(String date, String companyId) {
         return contractDao.findByShipDate(date,companyId);
     }
+
+    /**
+     * @param companyId
+     * @return
+     * 合同管理中查询所有状态为1（已提交）的合同
+     */
+    @Override
+    public PageInfo<Contract> findAvailbleContract(Integer currentPage,Integer pageSize,String companyId) {
+        PageHelper.startPage(currentPage,pageSize);
+        List<Contract> list = contractDao.findByContractStateAndCompanyId(1, companyId);
+
+        return new PageInfo<>(list,8);
+    }
 }

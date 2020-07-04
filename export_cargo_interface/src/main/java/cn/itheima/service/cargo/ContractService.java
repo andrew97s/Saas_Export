@@ -32,4 +32,6 @@ public interface ContractService {
 
     List<ContractProductVo> findContractProductVoiByShipTime(String date,String companyId);
 
+    PageInfo<Contract> findAvailbleContract(Integer currentPage,Integer pageSize,String companyId);
+
 }

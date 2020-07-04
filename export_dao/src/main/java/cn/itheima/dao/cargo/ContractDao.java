@@ -22,9 +22,13 @@ public interface ContractDao {
 
     List<Contract> findAll();
 
+    List<Contract> findByIds(String[] ids);
+
     List<Contract> findByCreatePerson(String createBy);
 
     List<Contract> findByCreateDeptId(String deptId);
 
     List<ContractProductVo> findByShipDate(@Param("shipDate") String date,@Param("companyId") String companyId);
+
+    List<Contract> findByContractStateAndCompanyId(@Param("state") Integer state,@Param("companyId") String companyId);
 }

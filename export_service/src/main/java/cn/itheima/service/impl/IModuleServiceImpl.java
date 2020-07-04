@@ -33,7 +33,7 @@ public class IModuleServiceImpl implements IModuleService {
     @Override
     public List<Module> findModulesByUser(User user) {
 
-        if (user.getDegree().equals("0")||user.getDegree().equals("1")){
+        if (user.getDegree()==0||user.getDegree()==1){
            return moduleDao.findByBelong(String.valueOf(user.getDegree()));
         }
 

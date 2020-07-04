@@ -1,6 +1,7 @@
 package cn.itheima.dao.cargo;
 
 import cn.itheima.domain.cargo.ContractProduct;
+import cn.itheima.domain.cargo.ExportProduct;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface ContractProductDao {
     void updateByPrimaryKey(ContractProduct record);
 
     List<ContractProduct> findAll(String contractId);
+
+    List<ContractProduct> findByContractIds(String[] contractIds);
 }

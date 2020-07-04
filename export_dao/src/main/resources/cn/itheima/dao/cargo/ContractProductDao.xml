@@ -40,6 +40,12 @@
     <select id="findAll" resultMap="BaseResultMap">
         select * from co_contract_product where contract_id=#{contractId}
     </select>
+    <select id="findByContractIds" resultMap="BaseResultMap">
+        select * from co_contract_product where contract_id in
+        <foreach collection="contractIds" item="contractId" separator="," open="(" close=")">
+            contractId
+        </foreach>
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from co_contract_product
     where id = #{id,jdbcType=VARCHAR}

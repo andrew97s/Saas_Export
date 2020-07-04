@@ -39,6 +39,12 @@
 
     $.get('/stat/sellCharts.do').done(function (data) {
         // 使用刚指定的配置项和数据显示图表。
+        var titles = [];
+        var values = [];
+        for (var i = 0; i < data.length; i++) {
+            titles[i] = data[i].name;
+            values[i] = data[i].value;
+        }
         myChart.setOption(
             option = {
                 title: {
@@ -47,7 +53,7 @@
                 },
                 xAxis: {
                     type: 'category',
-                    data: data.title,
+                    data:titles,
                     axisLabel: {
                         rotate:70
                     }
@@ -56,7 +62,7 @@
                     type: 'value'
                 },
                 series: [{
-                    data: data.value,
+                    data: values,
                     type: 'bar'
                 }]
             }

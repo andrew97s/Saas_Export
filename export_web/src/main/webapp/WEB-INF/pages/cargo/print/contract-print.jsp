@@ -45,10 +45,35 @@
                 </div>
                 <input type="text" name="inputDate" class="form-control pull-right" id="datepicker">
                 <span class="input-group-btn">
-                    <button type="submit"   class="btn btn-info btn-flat">submit</button>
+                    <button type="submit"   class="btn btn-info btn-flat">导出</button>
                 </span>
             </div>
         </form>
+
+        <form role="form" action="/cargo/contract/printExcelWithTemplate.do">
+            <div class="input-group input-group-sm" >
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" name="inputDate" class="form-control pull-right" id="datepicker1">
+                <span class="input-group-btn">
+                    <button type="submit"   class="btn btn-info btn-flat">模板导出</button>
+                </span>
+            </div>
+        </form>
+
+        <form role="form" action="/cargo/contract/printExcelMillion.do">
+            <div class="input-group input-group-sm" >
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" name="inputDate" class="form-control pull-right" id="datepicker2">
+                <span class="input-group-btn">
+                    <button type="submit"   class="btn btn-info btn-flat">导出百万数据</button>
+                </span>
+            </div>
+        </form>
+
     </div>
 </section>
 </div>
@@ -58,6 +83,22 @@
 <link rel="stylesheet" href="../../css/style.css">
 <script>
     $('#datepicker').datepicker({
+        language: "zh-CN",
+        autoclose: true,
+        format: 'yyyy-mm',
+        startView: 'months', //开始视图层，为月视图层
+        maxViewMode:'years', //最大视图层，为年视图层
+        minViewMode:'months', //最小视图层，为月视图层
+    });
+    $('#datepicker1').datepicker({
+        language: "zh-CN",
+        autoclose: true,
+        format: 'yyyy-mm',
+        startView: 'months', //开始视图层，为月视图层
+        maxViewMode:'years', //最大视图层，为年视图层
+        minViewMode:'months', //最小视图层，为月视图层
+    });
+    $('#datepicker2').datepicker({
         language: "zh-CN",
         autoclose: true,
         format: 'yyyy-mm',

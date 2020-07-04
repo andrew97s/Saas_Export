@@ -3,64 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>ztree的demo</title>
-    <link rel="stylesheet" href="plugins/ztree/css/zTreeStyle/zTreeStyle.css">
-    <script src="plugins/ztree/js/jquery-1.4.4.min.js"></script>
-    <script src="plugins/ztree/js/jquery.ztree.all-3.5.js"></script>
-    <SCRIPT LANGUAGE="JavaScript">
-        var zTreeObj;
-        // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
-        var setting = {
-            data: {
-                simpleData: {
-                    enable: true, //开启了简单的json结构
-                    idKey: "id",
-                    pIdKey: "pId",
-                    rootPId: 0
-                }
-            },
-            check: {
-                enable: true  //开启了树形节点上复选框
-            }
-        };
-        // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
-        /* 标准的json数据结构
-        var zNodes = [
-             {name:"test1",  children:[
-                     {name:"test1_1"}, {name:"test1_2",children:[{name:"test1_2_1"},{name:"test1_2_2"}]}]},
-             {name:"test2",  children:[
-                     {name:"test2_1"}, {name:"test2_2"}]}
-         ];*/
-        var zNodes=[
-            {id:"1",pId:"0",name:"根节点1"},
-            {id:"2",pId:"0",name:"根节点2"},
-            {id:"3",pId:"1",name:"根节点1子节点1"},
-            {id:"5",pId:"3",name:"根节点1子节点1子节点1",checked:true},
-            {id:"4",pId:"2",name:"根节点2子节点"}
-        ];
-        $(document).ready(function(){
-            zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-            zTreeObj.expandAll(true); //展开树形节点
-        });
-
-        // 获取勾选的数据节点的id  组成一个字符串 中间用逗号隔开 1,2,3,4,---->在后台中使用逗号分隔成数组
-        function save() {
-            let idsStr="";
-            let checkedNodes = zTreeObj.getCheckedNodes(true);
-            for (let i = 0; i < checkedNodes.length; i++) {
-                if((checkedNodes.length-1)==i){  //判断是否是最后一个节点。如果是不再拼接最后一个逗号了
-                    idsStr+= checkedNodes[i].id;
-                }else{
-                    idsStr+= checkedNodes[i].id +",";
-                }
-            }
-            alert(idsStr);
-        }
-    </SCRIPT>
+    <script src="plugins/echarts/echarts.js"></script>
 </head>
 <body>
-<div>
-    <button  onclick="save()">保存</button>
-    <ul id="treeDemo" class="ztree"></ul>
+
+<div id="main" style="width: 600px;height:400px;">
+
 </div>
+
+<script type="text/javascript" >
+    var mychart=echarts.init(document.getElementById('main'))
+
+    // 指定图表的配置项和数据
+    option = {
+        title: {
+            text: '堆叠区域图'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '邮件营销',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: '联盟广告',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: '视频广告',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name: '直接访问',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name: '搜索引擎',
+                type: 'line',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+                areaStyle: {},
+                data: [820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    mychart.setOption(option);
+</script>
 </body>
 </html>
